@@ -50,7 +50,7 @@ class ThermalPrinter(object):
     # this might work better on a Raspberry Pi
     SERIALPORT = '/dev/ttyAMA0'
 
-    BAUDRATE = 19200
+    BAUDRATE = 9600
     TIMEOUT = 3
 
     # pixels with more color value (average for multiple channels) are counted as white
@@ -351,7 +351,7 @@ class ThermalPrinter(object):
         print_bytes = []
 
         # read the bytes into an array
-        for rowStart in xrange(0, h, 256):
+        for rowStart in xrange(0, h, 255):
             chunkHeight = 255 if (h - rowStart) > 255 else h - rowStart
             print_bytes += (18, 42, chunkHeight, 48)
 
